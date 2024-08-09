@@ -1,0 +1,50 @@
+package ecom;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class day1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		WebDriver driver;
+        driver =new EdgeDriver();
+        driver.manage().window().maximize();
+        driver.get("http://live.techpanda.org/index.php/");
+        String expectedt = "Home page";
+        String actualt =driver.getTitle();
+        System.out.println(actualt);
+        if (expectedt.equals(actualt)) {
+     	   System.out.println("verfiy the title page");
+        }
+        else {
+     	   System.out.println("not verify");
+        }
+        
+        WebElement mob =driver.findElement(By.xpath("//*[@id=\"nav\"]/ol/li[1]/a"));
+        System.out.println(mob);
+        mob.click();
+        String expectedm = "Mobile";
+        String actualm =driver.getTitle();
+        System.out.println(actualm);
+        if (expectedm.equals(actualm)) {
+     	   System.out.println("verfiy the title page");
+        }
+        else {
+     	   System.out.println("not verify");
+        }
+       Select dropdown = new Select(driver.findElement(By.xpath("/html/body/div/div/div[2]/div/div[2]/div[1]/div[3]/div[1]/div[1]/div/select")));
+  dropdown.selectByVisibleText("Price");
+  String selectedOptionText = dropdown.getFirstSelectedOption().getText();
+  // Use if-else to verify the selected option
+  if (selectedOptionText.equals("Name")) {
+      System.out.println("The correct option is selected: " + selectedOptionText);
+  } else {
+      System.out.println("Incorrect option selected. Expected 'Option Name', but found: " + selectedOptionText);
+  }
+
+	}
+	}
