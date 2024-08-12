@@ -1,0 +1,28 @@
+package ecom;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+//import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+
+public class day3 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+ WebDriver driver ;
+ driver = new EdgeDriver();
+ String url="http://live.techpanda.org/index.php/";
+ driver.get(url);
+ driver.findElement(By.xpath("//*[@id=\"nav\"]/ol/li[1]/a")).click();
+ driver.findElement(By.xpath("//*[@id=\"top\"]/body/div/div/div[2]/div/div[2]/div[1]/div[3]/ul/li[2]/div/div[3]/button/span/span")).click();
+ driver.findElement(By.xpath("//*[@id=\"shopping-cart-table\"]/tbody/tr/td[4]/input")).sendKeys("000");
+ driver.findElement(By.xpath("//*[@id=\"shopping-cart-table\"]/tbody/tr/td[4]/button")).click();
+WebElement message =driver.findElement(By.xpath("//*[@id=\"shopping-cart-table\"]/tbody/tr/td[2]/p"));
+System.out.println(message.getText());
+driver.findElement(By.xpath("//*[@id=\"empty_cart_button\"]/span/span")).click();
+WebElement message2=driver.findElement(By.xpath("//*[@id=\"top\"]/body/div/div/div[2]/div/div/div[1]/h1"));
+System.out.println(message2.getText());
+	}
+
+}
