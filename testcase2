@@ -1,0 +1,41 @@
+package ecom;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.edge.EdgeDriver;
+
+public class verfi {
+
+    public static void main(String[] args) {
+        WebDriver driver;
+        driver = new EdgeDriver();
+        driver.manage().window().maximize();
+        driver.get("http://live.techpanda.org/index.php/");
+        
+        // Click on the "MOBILE" menu
+        WebElement mob = driver.findElement(By.xpath("//*[@id=\"nav\"]/ol/li[1]/a"));
+        mob.click();
+        
+        // Read and print the price of Sony Xperia mobile from the list page
+        WebElement pri = driver.findElement(By.xpath("//*[@id=\"product-price-1\"]/span"));
+        System.out.println("List Page Price: " + pri.getText());
+        
+        // Click on the Sony Xperia mobile
+        WebElement mobx = driver.findElement(By.xpath("//*[@id=\"top\"]/body/div/div/div[2]/div/div[2]/div[1]/div[3]/ul/li[2]/div/h2/a"));
+        mobx.click();
+        
+        // Read and print the price of Sony Xperia mobile from the details page
+        WebElement mobpri = driver.findElement(By.xpath("//*[@id=\"product_addtocart_form\"]/div[3]/div[2]/div"));
+        System.out.println("Details Page Price: " + mobpri.getText());
+        
+        // Verify if both prices are equal
+        if (pri.equals(mobpri)) {
+            System.out.println("both prices are equal");
+        } else {
+            System.out.println("not equal");
+        }
+
+        driver.close();
+    }
+}
